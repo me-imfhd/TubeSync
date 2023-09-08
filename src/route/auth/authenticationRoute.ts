@@ -11,7 +11,12 @@ const REDIRECT_URIS = process.env.GOOGLE_REDIRECT_URIS;
 
 export const OAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URIS);
 
-export let authenticated = false;
+export let authenticated: any = false;
+
+export function setAuthenticated(value: boolean) {
+  authenticated = value;
+}
+
 const scopes =
   'https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
 

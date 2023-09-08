@@ -3,9 +3,17 @@ import fs from 'fs';
 import multer from 'multer';
 import path from 'path';
 import { google, youtube_v3 } from 'googleapis';
-import { OAuth2Client } from './authenticationRoute';
-import { videoMetadata } from './videoMetadata';
-import { authenticated } from './authenticationRoute';
+import { OAuth2Client } from '../auth/authenticationRoute';
+import { videoData } from '../../videoMetadata';
+import { authenticated } from '../auth/authenticationRoute';
+
+export interface RequestBody {
+  title: string;
+  description: string;
+  categoryId: string;
+  privacyStatus: string;
+  thumbnailUrl: string;
+}
 
 const router = Router();
 
@@ -20,6 +28,9 @@ const storage: multer.StorageEngine = multer.diskStorage({
 const upload = multer({ storage: storage }).single('video');
 
 router.post('/upload', (req: Request, res: Response) => {
+
+  const videoMetadata = videoData(req.body)
+
   if (!authenticated) {
     res.status(403).json({ msg: 'You are not authenticated' });
     return;

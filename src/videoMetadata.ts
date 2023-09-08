@@ -1,14 +1,26 @@
 import {google, youtube_v3} from "googleapis";
+import { RequestBody } from "./route/upload/videoUploadRoute";
 
 
-export const videoMetadata: youtube_v3.Schema$Video = 
+
+export function videoData(body: RequestBody){
+  const {title, description, categoryId, privacyStatus, thumbnailUrl} = body;
+  const videoMetadata: youtube_v3.Schema$Video = 
       {
         snippet: {
-          categoryId: "22",
-          description: "Description of uploaded video 101010101010.",
-          title: "Test video upload."
+          categoryId: categoryId,
+          description: description,
+          title: title,
+          thumbnails: {
+            maxres:{
+              url: thumbnailUrl
+            }
+          }
         },
         status: {
-          privacyStatus: "private"
+          privacyStatus: privacyStatus || "private"
         }
       }
+  return videoMetadata;
+}
+ 
