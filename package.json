@@ -1,26 +1,28 @@
 {
-  "name": "tubesync",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "with-docker",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "googleapis": "^126.0.1",
-    "multer": "^1.4.5-lts.1",
-    "ts-node": "^10.9.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@swc/core": "^1.3.83",
-    "@types/express": "^4.17.17",
-    "@types/multer": "^1.4.7",
-    "@types/node": "^20.5.9",
-    "regenerator-runtime": "^0.14.0"
+    "eslint-config-custom": "*",
+    "prettier": "^2.8.8",
+    "turbo": "latest"
+  },
+  "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
   }
 }
