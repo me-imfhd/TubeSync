@@ -21,7 +21,8 @@
     "react": "latest",
     "react-dom": "latest",
     "superjson": "^1.13.3",
-    "zod": "3.21.4"
+    "zod": "3.21.4",
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -30,10 +31,12 @@
     "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "eslint-config-custom": "workspace:*",
     "postcss": "latest",
     "prisma": "^5.3.1",
     "tailwindcss": "latest",
     "typescript": "latest",
-    "zod-prisma": "^0.5.4"
+    "zod-prisma": "^0.5.4",
+    "tsconfig": "workspace:*"
   }
 }
