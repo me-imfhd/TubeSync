@@ -1,7 +1,8 @@
-import { Router, Request, Response } from 'express';
+import  express,{ Router, Request, Response } from 'express';
 import { authenticated, setAuthenticated } from './auth/authenticationRoute';
+import fetch from 'node-fetch';
 
-const router = Router();
+const router: express.Router = Router();
 
 
 router.post('/revoke-access-token', async (req: Request, res: Response) => {

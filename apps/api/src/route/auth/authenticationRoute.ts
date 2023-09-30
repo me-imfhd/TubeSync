@@ -13,7 +13,7 @@ if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URIS) {
   throw new Error("Environment variables not set");
 }
 
-export const OAuth2Client = new GoogleOAuth2Client(
+export const OAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
   REDIRECT_URIS
@@ -33,14 +33,14 @@ router.get("/", async (req: Request, res: Response) => {
   if (!authenticated) {
     const url = await OAuth2Client.generateAuthUrl({
       access_type: "offline",
-      scope: scopes,
+      scope: scopes
     });
     res.json({ msg: "Open this URL for authentication", url: url });
     return;
   }
   const oauth2 = google.oauth2({
     version: "v2",
-    auth: OAuth2Client,
+    auth: OAuth2Client
   });
   try {
     const { data } = await oauth2.userinfo.get();
