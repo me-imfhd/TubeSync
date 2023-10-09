@@ -1,6 +1,7 @@
 # TubeSync
 
 This is an official TubeSync.
+Login and upload your youtube videos from TubeSync.
 
 ## Docker Installation
 
